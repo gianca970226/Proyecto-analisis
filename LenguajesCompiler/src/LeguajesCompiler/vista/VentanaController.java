@@ -232,7 +232,7 @@ public class VentanaController implements Initializable {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Elige Tu Archivo");
         //this.file=fileChooser.showOpenDialog(LeguajesCompiler.Main.primaryStage); //
-        this.file = new File("/media/gian/Datos D/Semestre VII/Analisis y Diseño de Algoritmos/ProyectoAnalisis/LenguajesCompiler/src/LeguajesCompiler/vista/programa.txt");
+        this.file = new File("D:/Semestre VII/Analisis y Diseño de Algoritmos/ProyectoAnalisis/Proyecto-analisis/LenguajesCompiler/src/LeguajesCompiler/vista/programa.txt");
         this.ruta = file.getAbsolutePath();//"/home/sebastian/NetBeansProjects/LenguajesCompiler/src/LeguajesCompiler/vista/textoprueba.txt";
 
         String cadena;
@@ -288,8 +288,8 @@ public class VentanaController implements Initializable {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Guardar Archivo");
         //this.file=fileChooser.showSaveDialog(LeguajesCompiler.Main.primaryStage); //
-        this.file = new File("/media/gian/Datos D/Semestre VII/Analisis y Diseño de Algoritmos/ProyectoAnalisis/LenguajesCompiler/src/LeguajesCompiler/vista/programa.txt");
-
+        this.file = new File("D:/Semestre VII/Analisis y Diseño de Algoritmos/ProyectoAnalisis/Proyecto-analisis/LenguajesCompiler/src/LeguajesCompiler/vista/programa.txt");
+        //D:/Semestre VII/Analisis y Diseño de Algoritmos/ProyectoAnalisis/Proyecto-analisis/LenguajesCompiler/src/LeguajesCompiler/vista/programa.txt
         System.out.println("-------------> Se guardo");
 
         String f = "";

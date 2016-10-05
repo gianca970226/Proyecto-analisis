@@ -52,7 +52,7 @@ public class Main extends Application {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        //generalLexico(args);
+        generalLexico(args);
         launch(args);
         
     }
@@ -83,7 +83,7 @@ public class Main extends Application {
             if (arch.renameTo(new File(nuevoDir))) {
                 System.out.println("\n*** Generado ***\n");
                 System.out.println("\n*** Saliendo automaticamente ***\n");
-                System.exit(0);
+                
             } else {
                 System.out.println("\n*** No generado ***\n");
             }

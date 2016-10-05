@@ -70,14 +70,15 @@ ALPHANUMERIC={LETRA}|{DIGITO}
 NUMERO=({DIGITO})+
 IDENTIFICADOR={LETRA}({ALPHANUMERIC})*
 ESPACIO=" "
-COMENTARIO="#".({ALPHANUMERIC})*
+SIMBOLO="#"
 SALTO=\n|\r|\r\n
+COMENTARIO={SIMBOLO}({ALPHANUMERIC})*
 //fin declaraciones
 
 /* Seccion de reglas lexicas */
 %% 
 //Regla     {Acciones}
-{COMENTARIO}-\n   {
+{COMENTARIO}   {
     contador++;
     Yytoken t = new Yytoken(contador,yytext(),"comentario",yyline,yycolumn);
     tokens.add(t);

@@ -33,6 +33,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.MenuItem;
@@ -115,13 +116,14 @@ public class VentanaController implements Initializable {
 
     @FXML
     private void Ejecutar() {
-        
+
         generarListaTokens();
         mostrarListaTokens();
         //   analizadorSemantico=new clsSemantico();
         //        analizadorLexico = new clsAnalizador(); 
         //        analizadorlexico();
     }
+
     public void generarListaTokens() {
         String entrada = textarea.getText();
         InputStream is = new ByteArrayInputStream(entrada.getBytes());
@@ -132,15 +134,13 @@ public class VentanaController implements Initializable {
             analizadorLexico = new AnalizadorLexico(bf);
             Yytoken token = null;
             do {
-                try{
-                token = analizadorLexico.nextToken();
-                }
-                catch(Error E)
-                {
+                try {
+                    token = analizadorLexico.nextToken();
+                } catch (Error E) {
                     System.out.println(E.getMessage());
                     erroresLexicos.setText(E.getMessage());
                 }
-                } while (token != null);
+            } while (token != null);
         } catch (Exception ex) {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
@@ -152,10 +152,11 @@ public class VentanaController implements Initializable {
         }
         System.out.println("\n*** Ejecucion finalizada ***\n");
     }
+
     public void mostrarListaTokens() {
-         inicializarTablaToken();
+        inicializarTablaToken();
         for (int i = 0; i < analizadorLexico.getTokens().size(); i++) {
-           añadirToken(analizadorLexico.getTokens().get(i).tipo, analizadorLexico.getTokens().get(i).token,analizadorLexico.getTokens().get(i).linea,analizadorLexico.getTokens().get(i).columna);
+            añadirToken(analizadorLexico.getTokens().get(i).tipo, analizadorLexico.getTokens().get(i).token, analizadorLexico.getTokens().get(i).linea, analizadorLexico.getTokens().get(i).columna);
 //          
         }
     }
@@ -355,7 +356,7 @@ public class VentanaController implements Initializable {
 
         textAreaLineas.setText("");
 
-        for (int i = 1; i <= numfilas; i++) {
+        for (int i = 0; i <= numfilas; i++) {
 
             textAreaLineas.setText(textAreaLineas.getText() + i + "\n");
             textAreaLineas.appendText("");
@@ -378,6 +379,13 @@ public class VentanaController implements Initializable {
 
         textAreaLineas.setText("" + aux);
         textAreaLineas.appendText("");
+
+    }
+
+    @FXML
+    private void mirarLineaSeleccionada() {
+
+        System.out.println("");
 
     }
 
@@ -458,8 +466,17 @@ public class VentanaController implements Initializable {
 
                 lineasAtras();
             } else if (event.getCode() == KeyCode.DELETE) {
-
                 lineasAtras();
+            } else if (event.isControlDown()) {
+                if (event.getCode() == KeyCode.X) {
+                    System.out.println("az");
+                    lineasAtras();
+                }
+                else if(event.getCode() == KeyCode.V)
+                {
+                    inicializarLineas();
+                }
+
             }
 
         });

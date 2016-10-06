@@ -19,7 +19,7 @@
             <items>
                   <MenuItem fx:id="menuItemAbrir" mnemonicParsing="false" onAction="#Cargartxt" text="Abrir" />
           
-                  <MenuItem fx:id="menuItemGuardar" mnemonicParsing="false"  onAction="#Guardartxt" text="Guargar" />
+                  <MenuItem fx:id="menuItemGuardar" mnemonicParsing="false" onAction="#Guardartxt" text="Guargar" />
                 
               <MenuItem mnemonicParsing="false" text="Cerrar" />
             </items>
@@ -47,8 +47,13 @@
                <content>
                   <AnchorPane prefHeight="200.0" prefWidth="200.0">
                      <children>
-                        <TextArea id="textAreaLineas" fx:id="textAreaLineas" disable="true" editable="false" nodeOrientation="RIGHT_TO_LEFT" prefHeight="375.0" prefWidth="70.0" style="-fx-background-color: #CCC;" stylesheets="@../Css/estilo.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                        <TextArea fx:id="textarea" layoutX="122.0" layoutY="137.0" prefHeight="116.0" prefWidth="492.0" text="//Bienvenidos a  JampX Compiler" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="70.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                        <AnchorPane>
+                           <children>
+                              <TextArea id="textAreaLineas" fx:id="textAreaLineas" editable="false" layoutX="70.0" nodeOrientation="RIGHT_TO_LEFT" onMouseClicked="#mirarLineaSeleccionada" prefHeight="375.0" prefWidth="70.0" style="-fx-background-color: #CCC;" stylesheets="@../Css/estilo.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                              <Separator orientation="VERTICAL" prefHeight="200.0" />
+                           </children>
+                        </AnchorPane>
+                        <TextArea fx:id="textarea" layoutX="122.0" layoutY="137.0" prefHeight="116.0" prefWidth="492.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="70.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                      </children>
                   </AnchorPane>
                </content>
@@ -161,7 +166,7 @@
       </Separator>
       <ToolBar layoutX="60.0" layoutY="41.0" prefHeight="40.0" prefWidth="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="27.0">
         <items>
-          <Button fx:id="btnRun"  onAction="#Ejecutar" text="Run &gt;">
+          <Button fx:id="btnRun" onAction="#Ejecutar" text="Run &gt;">
                <font>
                   <Font name="LMRoman10-Bold" size="14.0" />
                </font>

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.canvas.*?>
 <?import javafx.scene.chart.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.effect.*?>
@@ -47,9 +48,9 @@
                <content>
                   <AnchorPane fx:id="anchorPane1" prefHeight="200.0" prefWidth="200.0">
                      <children>
-                        <TextArea id="textAreaLineas" fx:id="textAreaLineas" editable="false" nodeOrientation="RIGHT_TO_LEFT" onMouseClicked="#mirarLineaSeleccionada" prefHeight="375.0" prefWidth="70.0" style="-fx-background-color: #CCC;" stylesheets="@../Css/estilo.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                        <TextArea id="textAreaLineas" fx:id="textAreaLineas" editable="false" layoutX="-12.0" nodeOrientation="RIGHT_TO_LEFT" onMouseClicked="#mirarLineaSeleccionada" prefHeight="379.0" prefWidth="58.0" style="-fx-background-color: #CCC;" stylesheets="@../Css/estilo.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-12.0" AnchorPane.topAnchor="0.0" />
                         <Separator orientation="VERTICAL" prefHeight="200.0" />
-                        <TextArea fx:id="textarea" prefHeight="116.0" prefWidth="492.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="70.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                        <TextArea fx:id="textarea" prefHeight="368.0" prefWidth="1090.0" AnchorPane.bottomAnchor="-12.0" AnchorPane.leftAnchor="47.0" AnchorPane.rightAnchor="-431.0" AnchorPane.topAnchor="0.0" />
                      </children>
                   </AnchorPane>
                </content>

@@ -36,7 +36,11 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Orientation;
+import javafx.scene.Node;
 import javafx.scene.control.MenuItem;
+import javafx.scene.control.RadioButton;
+import javafx.scene.control.Separator;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TableColumn;
@@ -110,6 +114,8 @@ public class VentanaController implements Initializable {
     @FXML
     private TableColumn telefonoCL;
     ObservableList<clstableTokens> personas;
+    @FXML
+    private AnchorPane anchorPane1;
     AnalizadorLexico analizadorLexico;
 //     clsSemantico analizadorSemantico;
 //      clsAnalizador analizadorLexico;
@@ -357,7 +363,9 @@ public class VentanaController implements Initializable {
         textAreaLineas.setText("");
 
         for (int i = 0; i <= numfilas; i++) {
-
+            this.anchorPane1.getChildren().add(new RadioButton());
+            this.anchorPane1.getChildren().get(this.anchorPane1.getChildren().size()-1).setLayoutX(0);
+            this.anchorPane1.getChildren().get(this.anchorPane1.getChildren().size()-1).setLayoutY(27.5*i);
             textAreaLineas.setText(textAreaLineas.getText() + i + "\n");
             textAreaLineas.appendText("");
         }
@@ -440,7 +448,7 @@ public class VentanaController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
 
         inicializarLineas();
-
+        
         inicializarTablaToken();
 
         try {

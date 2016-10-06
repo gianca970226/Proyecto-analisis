@@ -19,9 +19,9 @@
             <items>
                   <MenuItem fx:id="menuItemAbrir" mnemonicParsing="false" onAction="#Cargartxt" text="Abrir" />
           
-                  <MenuItem fx:id="menuItemGuardar" mnemonicParsing="false" onAction="#Guardartxt" text="Guargar" />
+                        <MenuItem fx:id="menuItemGuardar" mnemonicParsing="false" onAction="#Guardartxt" text="Guargar" />
                 
-              <MenuItem mnemonicParsing="false" text="Cerrar" />
+                    <MenuItem mnemonicParsing="false" text="Cerrar" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Editar">
@@ -45,15 +45,11 @@
         <tabs>
             <Tab text="Area">
                <content>
-                  <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                  <AnchorPane fx:id="anchorPane1" prefHeight="200.0" prefWidth="200.0">
                      <children>
-                        <AnchorPane>
-                           <children>
-                              <TextArea id="textAreaLineas" fx:id="textAreaLineas" editable="false" layoutX="70.0" nodeOrientation="RIGHT_TO_LEFT" onMouseClicked="#mirarLineaSeleccionada" prefHeight="375.0" prefWidth="70.0" style="-fx-background-color: #CCC;" stylesheets="@../Css/estilo.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                              <Separator orientation="VERTICAL" prefHeight="200.0" />
-                           </children>
-                        </AnchorPane>
-                        <TextArea fx:id="textarea" layoutX="122.0" layoutY="137.0" prefHeight="116.0" prefWidth="492.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="70.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                        <TextArea id="textAreaLineas" fx:id="textAreaLineas" editable="false" nodeOrientation="RIGHT_TO_LEFT" onMouseClicked="#mirarLineaSeleccionada" prefHeight="375.0" prefWidth="70.0" style="-fx-background-color: #CCC;" stylesheets="@../Css/estilo.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                        <Separator orientation="VERTICAL" prefHeight="200.0" />
+                        <TextArea fx:id="textarea" prefHeight="116.0" prefWidth="492.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="70.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                      </children>
                   </AnchorPane>
                </content>

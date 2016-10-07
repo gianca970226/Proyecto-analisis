@@ -31,6 +31,7 @@ import java.util.LinkedList;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -76,7 +77,8 @@ public class VentanaController implements Initializable {
     private TabPane tabPaneErrores;
     @FXML
     private TabPane tabPaneNavegador;
-
+    @FXML
+    private AnchorPane anchorPane1;
     @FXML
     private Tab tabEditor;
     @FXML
@@ -115,10 +117,59 @@ public class VentanaController implements Initializable {
     private TableColumn telefonoCL;
     ObservableList<clstableTokens> personas;
     @FXML
-    private AnchorPane anchorPane1;
+    private TableView<clsIdLineas> numLineas;
+    @FXML
+    private TableColumn ids;
+    ObservableList<clsIdLineas> numeros;
+
     AnalizadorLexico analizadorLexico;
 //     clsSemantico analizadorSemantico;
 //      clsAnalizador analizadorLexico;
+
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+
+        //inicializarLineas();
+       
+        inicializarTablaToken();
+
+        try {
+
+            Cargartxt();
+        } catch (IOException ex) {
+            Logger.getLogger(VentanaController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+//        textarea.setOnKeyPressed(event -> {
+//
+//            if (event.getCode() == KeyCode.ENTER) {
+//
+//                lineasEnter();
+//
+//            }
+//
+//        });
+//
+//        textarea.setOnKeyReleased(event -> {
+//
+//            if (event.getCode() == KeyCode.BACK_SPACE) {
+//
+//                lineasAtras();
+//            } else if (event.getCode() == KeyCode.DELETE) {
+//                lineasAtras();
+//            } else if (event.isControlDown()) {
+//                if (event.getCode() == KeyCode.X) {
+//                    System.out.println("az");
+//                    lineasAtras();
+//                } else if (event.getCode() == KeyCode.V) {
+//                    inicializarLineas();
+//                }
+//
+//            }
+//
+//        });
+
+    }
 
     @FXML
     private void Ejecutar() {
@@ -259,7 +310,7 @@ public class VentanaController implements Initializable {
 
         textarea.setText(texto1);
 
-        inicializarLineas();
+        //inicializarLineas();
         return texto;
     }
 
@@ -363,9 +414,7 @@ public class VentanaController implements Initializable {
         textAreaLineas.setText("");
 
         for (int i = 0; i <= numfilas; i++) {
-            this.anchorPane1.getChildren().add(new RadioButton());
-            this.anchorPane1.getChildren().get(this.anchorPane1.getChildren().size()-1).setLayoutX(0);
-            this.anchorPane1.getChildren().get(this.anchorPane1.getChildren().size()-1).setLayoutY(27.5*i);
+
             textAreaLineas.setText(textAreaLineas.getText() + i + "\n");
             textAreaLineas.appendText("");
         }
@@ -429,66 +478,23 @@ public class VentanaController implements Initializable {
         p1.edad.set(fila);
         p1.telefono.set("" + columna);
         personas.add(p1);
+        clsIdLineas linea = new clsIdLineas();
+        linea.id.set(1123123);
+        numeros.add(linea);
 
     }
 
     private void inicializarTablaToken() {
-
         nombreCL.setCellValueFactory(new PropertyValueFactory<clstableTokens, String>("nombre"));
         apellidoCL.setCellValueFactory(new PropertyValueFactory<clstableTokens, String>("apellido"));
         edadCL.setCellValueFactory(new PropertyValueFactory<clstableTokens, Integer>("edad"));
         telefonoCL.setCellValueFactory(new PropertyValueFactory<clstableTokens, String>("telefono"));
-
         personas = FXCollections.observableArrayList();
         tablaPersonas.setItems(personas);
-
-    }
-
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-
-        inicializarLineas();
-        
-        inicializarTablaToken();
-
-        try {
-
-            Cargartxt();
-        } catch (IOException ex) {
-            Logger.getLogger(VentanaController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-        textarea.setOnKeyPressed(event -> {
-
-            if (event.getCode() == KeyCode.ENTER) {
-
-                lineasEnter();
-
-            }
-
-        });
-
-        textarea.setOnKeyReleased(event -> {
-
-            if (event.getCode() == KeyCode.BACK_SPACE) {
-
-                lineasAtras();
-            } else if (event.getCode() == KeyCode.DELETE) {
-                lineasAtras();
-            } else if (event.isControlDown()) {
-                if (event.getCode() == KeyCode.X) {
-                    System.out.println("az");
-                    lineasAtras();
-                }
-                else if(event.getCode() == KeyCode.V)
-                {
-                    inicializarLineas();
-                }
-
-            }
-
-        });
-
+         
+        ids.setCellValueFactory(new PropertyValueFactory<clsIdLineas, Integer>("id"));
+        numeros = FXCollections.observableArrayList();
+        numLineas.setItems(numeros);
     }
 
     public TextArea getTextAreaOtros() {

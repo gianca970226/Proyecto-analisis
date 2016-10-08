@@ -14,7 +14,6 @@ package LeguajesCompiler.vista;
 import LeguajesCompiler.Main;
 import LeguajesCompiler.Lexico.AnalizadorLexico;
 import LeguajesCompiler.Lexico.Yytoken;
-
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.ByteArrayInputStream;
@@ -67,18 +66,19 @@ public class VentanaController implements Initializable {
     private String ruta = "";
     private File file;
     Main main;
-
     @FXML
     private AnchorPane anchorPane;
-
     @FXML
     private TabPane tabPanebEditor;
     @FXML
     private TabPane tabPaneErrores;
     @FXML
     private TabPane tabPaneNavegador;
+<<<<<<< HEAD
     @FXML
     private AnchorPane anchorPane1;
+=======
+>>>>>>> origin/desarrollo-gian
     @FXML
     private Tab tabEditor;
     @FXML
@@ -125,6 +125,7 @@ public class VentanaController implements Initializable {
     AnalizadorLexico analizadorLexico;
 //     clsSemantico analizadorSemantico;
 //      clsAnalizador analizadorLexico;
+<<<<<<< HEAD
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -171,16 +172,51 @@ public class VentanaController implements Initializable {
 
     }
 
+=======
+>>>>>>> origin/desarrollo-gian
     @FXML
     private void Ejecutar() {
-
         generarListaTokens();
         mostrarListaTokens();
         //   analizadorSemantico=new clsSemantico();
         //        analizadorLexico = new clsAnalizador(); 
         //        analizadorlexico();
     }
-
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+        inicializarLineas();
+        inicializarTablaToken();
+        try {
+            Cargartxt();
+        } catch (IOException ex) {
+            Logger.getLogger(VentanaController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        textarea.setOnKeyPressed(event -> {
+            if (event.getCode() == KeyCode.ENTER) {
+                lineasEnter();
+            }
+        });
+        textarea.setOnKeyReleased(event -> {
+            if (event.getCode() == KeyCode.BACK_SPACE) {
+                lineasAtras();
+            } else {
+                if (event.getCode() == KeyCode.DELETE) {
+                    lineasAtras();
+                } else {
+                    if (event.isControlDown()) {
+                        if (event.getCode() == KeyCode.X) {
+                            System.out.println("az");
+                            lineasAtras();
+                        } else {
+                            if (event.getCode() == KeyCode.V) {
+                                inicializarLineas();
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    }
     public void generarListaTokens() {
         String entrada = textarea.getText();
         InputStream is = new ByteArrayInputStream(entrada.getBytes());
@@ -209,7 +245,6 @@ public class VentanaController implements Initializable {
         }
         System.out.println("\n*** Ejecucion finalizada ***\n");
     }
-
     public void mostrarListaTokens() {
         inicializarTablaToken();
         for (int i = 0; i < analizadorLexico.getTokens().size(); i++) {
@@ -217,7 +252,6 @@ public class VentanaController implements Initializable {
 //          
         }
     }
-
 //       public void analizadorlexico(){
 //           
 //        String [] linea=textarea.getText().split("\n"); 
@@ -286,34 +320,30 @@ public class VentanaController implements Initializable {
 //    }
     @FXML
     private String Cargartxt() throws FileNotFoundException, IOException {
-
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Elige Tu Archivo");
         //this.file=fileChooser.showOpenDialog(LeguajesCompiler.Main.primaryStage); //
         this.file = new File("D:/Semestre VII/Analisis y Diseño de Algoritmos/ProyectoAnalisis/Proyecto-analisis/LenguajesCompiler/src/LeguajesCompiler/vista/programa.txt");
         this.ruta = file.getAbsolutePath();//"/home/sebastian/NetBeansProjects/LenguajesCompiler/src/LeguajesCompiler/vista/textoprueba.txt";
-
         String cadena;
         String texto = "";
         String texto1 = "";
         FileReader f;
-
         f = new FileReader(ruta);
         BufferedReader b = new BufferedReader(f);
-
         while ((cadena = b.readLine()) != null) {
-
             texto1 = texto1 + "\n" + cadena;
-
         }
         b.close();
-
         textarea.setText(texto1);
+<<<<<<< HEAD
 
         //inicializarLineas();
+=======
+        inicializarLineas();
+>>>>>>> origin/desarrollo-gian
         return texto;
     }
-
 //    @FXML
 //    private void CargarGramatica() throws FileNotFoundException, IOException {
 //
@@ -342,39 +372,29 @@ public class VentanaController implements Initializable {
 //
 //    }
     public void Guardartxt() throws IOException {
-
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Guardar Archivo");
         //this.file=fileChooser.showSaveDialog(LeguajesCompiler.Main.primaryStage); //
         this.file = new File("D:/Semestre VII/Analisis y Diseño de Algoritmos/ProyectoAnalisis/Proyecto-analisis/LenguajesCompiler/src/LeguajesCompiler/vista/programa.txt");
         //D:/Semestre VII/Analisis y Diseño de Algoritmos/ProyectoAnalisis/Proyecto-analisis/LenguajesCompiler/src/LeguajesCompiler/vista/programa.txt
         System.out.println("-------------> Se guardo");
-
         String f = "";
-
         FileWriter fw = null;
         BufferedWriter bw = null;
-
         // EL segundo parametro es un boolean
         // En true escribe al final
         // En false escribe al inicio
         fw = new FileWriter(file, false);
         bw = new BufferedWriter(fw);
-
         String texto = this.textarea.getText();
-
         System.out.println(texto);
-
         bw.write(texto, 0, texto.length());
         //FileDialog dialogoArchivo; 
         //dialogoArchivo = new FileDialog(f,"Lista de Archivos desde Frame", FileDialog.SAVE); 
         // dialogoArchivo.show();
         bw.close();
-
         System.out.println("termino guardas");
-
     }
-
 //    public void GuardarGramatica() throws IOException {
 //
 //        FileChooser fileChooser = new FileChooser();
@@ -408,82 +428,63 @@ public class VentanaController implements Initializable {
 //
 //    }
     private void inicializarLineas() {
-
         int numfilas = (textarea.getText()).split("\n").length;
-
         textAreaLineas.setText("");
+<<<<<<< HEAD
 
         for (int i = 0; i <= numfilas; i++) {
 
             textAreaLineas.setText(textAreaLineas.getText() + i + "\n");
             textAreaLineas.appendText("");
+=======
+        for (int i = 1; i <= numfilas; i++) {
+            textAreaLineas.appendText(i + "\n");
+>>>>>>> origin/desarrollo-gian
         }
-
         //textAreaLineas.scrollTopProperty().bindBidirectional(textarea.scrollTopProperty());
         textAreaLineas.scrollTopProperty().set(textarea.scrollTopProperty().get());
-
     }
-
     @FXML
     private void lineasEnter() {
-
         String[] vcodigo = (textarea.getText() + " ").split("\n");
-
         int nlines = vcodigo.length + 1;
         // System.out.println("texto lineas totales : "+nlines);
-
-        String aux = textAreaLineas.getText() + nlines + "\n";
-
-        textAreaLineas.setText("" + aux);
-        textAreaLineas.appendText("");
-
+        textAreaLineas.appendText(nlines + "\n");
+        
     }
-
     @FXML
     private void mirarLineaSeleccionada() {
-
         System.out.println("");
-
     }
-
     @FXML
     private void lineasAtras() {
-
         String[] vcodigo = (textarea.getText() + " ").split("\n");
         int nlines = vcodigo.length;
-
         System.out.println("linea actual: " + nlines);
-
         String lineas = textAreaLineas.getText();
-
         int ind = lineas.indexOf("" + nlines);
-
         String aux = lineas.substring(ind, lineas.length());
-
         String aux1 = lineas.replace(aux + "", "");
-
         System.out.println("quedo:\n" + aux1);
-
         textAreaLineas.setText(aux1 + nlines + "\n");
         textAreaLineas.appendText("");
-
     }
-
     @FXML
     private void añadirToken(String token, String lexema, int fila, int columna) {
-
         clstableTokens p1 = new clstableTokens();
         p1.nombre.set(token);
         p1.apellido.set(lexema);
         p1.edad.set(fila);
         p1.telefono.set("" + columna);
         personas.add(p1);
+<<<<<<< HEAD
         clsIdLineas linea = new clsIdLineas();
         linea.id.set(1123123);
         numeros.add(linea);
 
+=======
+>>>>>>> origin/desarrollo-gian
     }
-
     private void inicializarTablaToken() {
         nombreCL.setCellValueFactory(new PropertyValueFactory<clstableTokens, String>("nombre"));
         apellidoCL.setCellValueFactory(new PropertyValueFactory<clstableTokens, String>("apellido"));
@@ -491,18 +492,20 @@ public class VentanaController implements Initializable {
         telefonoCL.setCellValueFactory(new PropertyValueFactory<clstableTokens, String>("telefono"));
         personas = FXCollections.observableArrayList();
         tablaPersonas.setItems(personas);
+<<<<<<< HEAD
          
         ids.setCellValueFactory(new PropertyValueFactory<clsIdLineas, Integer>("id"));
         numeros = FXCollections.observableArrayList();
         numLineas.setItems(numeros);
     }
 
+=======
+    }
+>>>>>>> origin/desarrollo-gian
     public TextArea getTextAreaOtros() {
         return textAreaOtros;
     }
-
     public void setTextAreaOtros(TextArea textAreaOtros) {
         this.textAreaOtros = textAreaOtros;
     }
-
 }

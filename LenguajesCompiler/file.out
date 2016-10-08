@@ -15,5 +15,8 @@ Token #14:  C.Lexico: fin_linea [4,4]
 Token #15: #ASDASD C.Lexico: comentario [5,0]
 Token #16:  C.Lexico: fin_linea [5,7]
 Token #17: sdfsdf C.Lexico: id [6,0]
+<<<<<<< HEAD
 Token #18:  C.Lexico: fin_linea [6,6]
 Token #19: sasdf C.Lexico: id [7,0]
+=======
+>>>>>>> origin/desarrollo-gian

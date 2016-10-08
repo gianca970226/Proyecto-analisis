@@ -8,7 +8,11 @@
   </information>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
+<<<<<<< HEAD
     <jar href="LenguajesCompiler.jar" size="21147" download="eager" />
+=======
+    <jar href="LenguajesCompiler.jar" size="21120" download="eager" />
+>>>>>>> origin/desarrollo-gian
     <jar href="lib/java-cup-11a.jar" size="96121" download="eager" />
     <jar href="lib/jflex-1.5.0.jar" size="942317" download="eager" />
   </resources>

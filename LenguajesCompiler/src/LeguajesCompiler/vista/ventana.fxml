@@ -48,18 +48,15 @@
                <content>
                   <AnchorPane fx:id="anchorPane1" prefHeight="200.0" prefWidth="200.0">
                      <children>
-<<<<<<< HEAD
+
                         <TableView fx:id="numLineas" editable="true" prefHeight="362.0" prefWidth="58.0">
                           <columns>
                             <TableColumn fx:id="ids" prefWidth="75.0" text="ids" />
                           </columns>
                         </TableView>
                         <TextArea fx:id="textarea" layoutX="58.0" layoutY="39.0" prefHeight="325.0" prefWidth="1182.0" AnchorPane.bottomAnchor="-1.0" AnchorPane.leftAnchor="58.0" AnchorPane.rightAnchor="-516.0" AnchorPane.topAnchor="39.0" />
-=======
-                        <TextArea id="textAreaLineas" fx:id="textAreaLineas" editable="false" layoutX="-12.0" nodeOrientation="RIGHT_TO_LEFT" onMouseClicked="#mirarLineaSeleccionada" prefHeight="379.0" prefWidth="58.0" style="-fx-background-color: #CCC;" stylesheets="@../Css/estilo.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-12.0" AnchorPane.topAnchor="0.0" />
                         <Separator orientation="VERTICAL" prefHeight="200.0" />
-                        <TextArea fx:id="textarea" prefHeight="368.0" prefWidth="1090.0" AnchorPane.bottomAnchor="-12.0" AnchorPane.leftAnchor="47.0" AnchorPane.rightAnchor="-431.0" AnchorPane.topAnchor="0.0" />
->>>>>>> origin/desarrollo-gian
+                       
                      </children>
                   </AnchorPane>
                </content>

@@ -14,6 +14,9 @@ import javafx.beans.property.SimpleStringProperty;
  */
 public class clsIdLineas {
        public SimpleIntegerProperty id = new SimpleIntegerProperty();
+
+    public clsIdLineas() {
+    }
     
     public Integer getNombre(){
         return id.get();

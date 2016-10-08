@@ -74,11 +74,10 @@ public class VentanaController implements Initializable {
     private TabPane tabPaneErrores;
     @FXML
     private TabPane tabPaneNavegador;
-<<<<<<< HEAD
+
     @FXML
     private AnchorPane anchorPane1;
-=======
->>>>>>> origin/desarrollo-gian
+
     @FXML
     private Tab tabEditor;
     @FXML
@@ -125,14 +124,12 @@ public class VentanaController implements Initializable {
     AnalizadorLexico analizadorLexico;
 //     clsSemantico analizadorSemantico;
 //      clsAnalizador analizadorLexico;
-<<<<<<< HEAD
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-
-        //inicializarLineas();
-       
         inicializarTablaToken();
+        inicializarLineas();
+        
 
         try {
 
@@ -169,11 +166,8 @@ public class VentanaController implements Initializable {
 //            }
 //
 //        });
-
     }
 
-=======
->>>>>>> origin/desarrollo-gian
     @FXML
     private void Ejecutar() {
         generarListaTokens();
@@ -182,41 +176,7 @@ public class VentanaController implements Initializable {
         //        analizadorLexico = new clsAnalizador(); 
         //        analizadorlexico();
     }
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        inicializarLineas();
-        inicializarTablaToken();
-        try {
-            Cargartxt();
-        } catch (IOException ex) {
-            Logger.getLogger(VentanaController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        textarea.setOnKeyPressed(event -> {
-            if (event.getCode() == KeyCode.ENTER) {
-                lineasEnter();
-            }
-        });
-        textarea.setOnKeyReleased(event -> {
-            if (event.getCode() == KeyCode.BACK_SPACE) {
-                lineasAtras();
-            } else {
-                if (event.getCode() == KeyCode.DELETE) {
-                    lineasAtras();
-                } else {
-                    if (event.isControlDown()) {
-                        if (event.getCode() == KeyCode.X) {
-                            System.out.println("az");
-                            lineasAtras();
-                        } else {
-                            if (event.getCode() == KeyCode.V) {
-                                inicializarLineas();
-                            }
-                        }
-                    }
-                }
-            }
-        });
-    }
+
     public void generarListaTokens() {
         String entrada = textarea.getText();
         InputStream is = new ByteArrayInputStream(entrada.getBytes());
@@ -245,6 +205,7 @@ public class VentanaController implements Initializable {
         }
         System.out.println("\n*** Ejecucion finalizada ***\n");
     }
+
     public void mostrarListaTokens() {
         inicializarTablaToken();
         for (int i = 0; i < analizadorLexico.getTokens().size(); i++) {
@@ -318,6 +279,7 @@ public class VentanaController implements Initializable {
 //        
 //        
 //    }
+
     @FXML
     private String Cargartxt() throws FileNotFoundException, IOException {
         FileChooser fileChooser = new FileChooser();
@@ -336,12 +298,10 @@ public class VentanaController implements Initializable {
         }
         b.close();
         textarea.setText(texto1);
-<<<<<<< HEAD
 
         //inicializarLineas();
-=======
-        inicializarLineas();
->>>>>>> origin/desarrollo-gian
+      //  inicializarLineas();
+
         return texto;
     }
 //    @FXML
@@ -371,6 +331,7 @@ public class VentanaController implements Initializable {
 //        textAreaGramatica.setText(texto1);
 //
 //    }
+
     public void Guardartxt() throws IOException {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Guardar Archivo");
@@ -427,35 +388,35 @@ public class VentanaController implements Initializable {
 //        System.out.println("se guardo la gramatica");
 //
 //    }
+
     private void inicializarLineas() {
         int numfilas = (textarea.getText()).split("\n").length;
-        textAreaLineas.setText("");
-<<<<<<< HEAD
+        //textAreaLineas.setText("");
 
-        for (int i = 0; i <= numfilas; i++) {
-
-            textAreaLineas.setText(textAreaLineas.getText() + i + "\n");
-            textAreaLineas.appendText("");
-=======
         for (int i = 1; i <= numfilas; i++) {
-            textAreaLineas.appendText(i + "\n");
->>>>>>> origin/desarrollo-gian
+            //textAreaLineas.appendText(i + "\n");
+            clsIdLineas oe1= new clsIdLineas();
+            oe1.id.set(1);
+            numeros.add(oe1);
         }
         //textAreaLineas.scrollTopProperty().bindBidirectional(textarea.scrollTopProperty());
-        textAreaLineas.scrollTopProperty().set(textarea.scrollTopProperty().get());
+      //  textAreaLineas.scrollTopProperty().set(textarea.scrollTopProperty().get());
     }
+
     @FXML
     private void lineasEnter() {
         String[] vcodigo = (textarea.getText() + " ").split("\n");
         int nlines = vcodigo.length + 1;
         // System.out.println("texto lineas totales : "+nlines);
         textAreaLineas.appendText(nlines + "\n");
-        
+
     }
+
     @FXML
     private void mirarLineaSeleccionada() {
         System.out.println("");
     }
+
     @FXML
     private void lineasAtras() {
         String[] vcodigo = (textarea.getText() + " ").split("\n");
@@ -469,6 +430,7 @@ public class VentanaController implements Initializable {
         textAreaLineas.setText(aux1 + nlines + "\n");
         textAreaLineas.appendText("");
     }
+
     @FXML
     private void añadirToken(String token, String lexema, int fila, int columna) {
         clstableTokens p1 = new clstableTokens();
@@ -477,14 +439,13 @@ public class VentanaController implements Initializable {
         p1.edad.set(fila);
         p1.telefono.set("" + columna);
         personas.add(p1);
-<<<<<<< HEAD
-        clsIdLineas linea = new clsIdLineas();
-        linea.id.set(1123123);
-        numeros.add(linea);
+        clsIdLineas oe = new clsIdLineas();
+        oe.id.set(1);
+        numeros.add(oe);
+        
 
-=======
->>>>>>> origin/desarrollo-gian
     }
+
     private void inicializarTablaToken() {
         nombreCL.setCellValueFactory(new PropertyValueFactory<clstableTokens, String>("nombre"));
         apellidoCL.setCellValueFactory(new PropertyValueFactory<clstableTokens, String>("apellido"));
@@ -492,20 +453,19 @@ public class VentanaController implements Initializable {
         telefonoCL.setCellValueFactory(new PropertyValueFactory<clstableTokens, String>("telefono"));
         personas = FXCollections.observableArrayList();
         tablaPersonas.setItems(personas);
-<<<<<<< HEAD
-         
-        ids.setCellValueFactory(new PropertyValueFactory<clsIdLineas, Integer>("id"));
+        ids.setCellValueFactory(new PropertyValueFactory<clsIdLineas,Integer>("id"));
         numeros = FXCollections.observableArrayList();
         numLineas.setItems(numeros);
+
+
     }
 
-=======
-    }
->>>>>>> origin/desarrollo-gian
     public TextArea getTextAreaOtros() {
         return textAreaOtros;
     }
+
     public void setTextAreaOtros(TextArea textAreaOtros) {
         this.textAreaOtros = textAreaOtros;
     }
+
 }
